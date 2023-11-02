@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Vista de Formulario -->
+        <record id="view_form_barcode" model="ir.ui.view">
+            <field name="name">barcode.barcode.form</field>
+            <field name="model">barcode.barcode</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="barcode"/>
+                                <field name="state"/>
+                            </group>
+                            <group>
+                                <button string="Download PDF" class="oe_highlight" type="object" icon="fa-file-pdf-o" name="generate_pdf_report"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vista de Árbol -->
+        <record id="view_tree_barcode" model="ir.ui.view">
+            <field name="name">barcode.barcode.tree</field>
+            <field name="model">barcode.barcode</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="barcode"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Acciones -->
+        <record id="action_barcode" model="ir.actions.act_window">
+            <field name="name">Códigos de Barras</field>
+            <field name="res_model">barcode.barcode</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menú -->
+        <menuitem id="menu_inventory_codigo" name="Códigos de Barras n" action="action_barcode" parent="stock.menu_stock_inventory_control" sequence="5"/>
+
+
+    </data>
+</odoo>
